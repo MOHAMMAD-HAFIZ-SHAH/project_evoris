@@ -1,0 +1,135 @@
+.overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.45);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 5000;
+    backdrop-filter: blur(3px);
+}
+
+.modal {
+    width: 480px;
+    background: #fff;
+    border-radius: 26px;
+    padding: 35px;
+    position: relative;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+    animation: popIn 0.25s ease;
+}
+
+@keyframes popIn {
+    from { transform: scale(0.92); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+.closeBtn {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    font-size: 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #666;
+}
+
+.avatar {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    margin: 0 auto 15px;
+    font-size: 36px;
+    font-weight: bold;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #7F00FF, #E100FF);
+}
+
+.name {
+    text-align: center;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.subtitle {
+    text-align: center;
+    color: #7a7a7a;
+    margin-bottom: 20px;
+}
+
+.statsRow {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.statCard {
+    width: 30%;
+    background: #f7f7ff;
+    padding: 15px;
+    border-radius: 16px;
+    text-align: center;
+}
+
+.statIcon {
+    font-size: 20px;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.details h3 {
+    margin-bottom: 12px;
+}
+
+.detailItem {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 15px;
+}
+
+.detailIcon {
+    font-size: 22px;
+}
+
+.label {
+    font-size: 12px;
+    color: #888;
+}
+
+.value {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 25px;
+}
+
+.settingsBtn {
+    flex: 1;
+    background: linear-gradient(135deg, #6C5CE7, #A29BFE);
+    border: none;
+    color: white;
+    padding: 12px;
+    border-radius: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-right: 8px;
+}
+
+.logoutBtn {
+    flex: 1;
+    background: #f2f2f2;
+    border: none;
+    color: #444;
+    padding: 12px;
+    border-radius: 12px;
+    font-weight: bold;
+    cursor: pointer;
+}

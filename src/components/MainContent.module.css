@@ -1,0 +1,132 @@
+/* components/MainContent.module.css */
+.main {
+  flex-grow: 1; /* Allows it to take up the rest of the vertical space */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* Centers content vertically */
+  text-align: center;
+  padding: 50px 20px;
+}
+
+.trustBadge {
+  color: #38a169; /* Green color */
+  font-weight: 500;
+  margin-bottom: 30px;
+  padding: 5px 15px;
+  border: 1px solid #38a169;
+  border-radius: 50px;
+  display: inline-block;
+  font-size: 0.9rem;
+}
+
+.headline {
+  font-size: 4.5rem;
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 20px;
+  max-width: 800px;
+}
+
+.preserve {
+  /* Purple/Magenta Gradient Text Effect */
+  background: linear-gradient(90deg, #8a2be2, #c432a3);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: block; 
+}
+
+.treasure {
+  color: #38a169; /* Teal/Green */
+  display: block;
+}
+
+.description {
+  max-width: 600px;
+  font-size: 1.15rem;
+  color: #555;
+  margin-bottom: 40px;
+  line-height: 1.6;
+}
+
+.ctaContainer {
+  display: flex;
+  gap: 20px;
+}
+
+.primaryCta {
+  padding: 15px 40px;
+  border: none;
+  border-radius: 30px;
+  color: white;
+  font-weight: bold;
+  font-size: 1rem;
+  /* Matching Button Gradient */
+  background: linear-gradient(90deg, #8a2be2, #c432a3);
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(138, 43, 226, 0.4);
+}
+
+.secondaryCta {
+  padding: 15px 40px;
+  border: 2px solid #8a2be2; 
+  border-radius: 30px;
+  background: white;
+  color: #8a2be2;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+}
+/* In components/MainContent.module.css */
+
+.primaryCta {
+  /* ... existing styles ... */
+  transition: transform 0.2s ease, filter 0.2s ease, box-shadow 0.2s ease; 
+}
+
+/* Hover State */
+.primaryCta:hover {
+  transform: scale(1.03); 
+  filter: brightness(1.1);
+  /* Enhance the shadow slightly to lift the button */
+  box-shadow: 0 6px 15px rgba(138, 43, 226, 0.5); 
+}
+.primaryCta {
+  padding: 15px 40px;
+  border: none;
+  border-radius: 30px;
+  color: white;
+  font-weight: bold;
+  font-size: 1rem;
+  background: linear-gradient(90deg, #8a2be2, #c432a3);
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(138, 43, 226, 0.4);
+  transition: transform 0.2s ease, filter 0.2s ease, box-shadow 0.2s ease;
+  
+  /* 🌟 ADD THIS LINE 🌟 */
+  text-decoration: none; 
+}
+/* In components/MainContent.module.css */
+
+.secondaryCta {
+  padding: 15px 40px;
+  border: 2px solid #8a2be2; /* Purple border */
+  border-radius: 30px;
+  background: white;
+  color: #8a2be2;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  /* Ensure the transition property is present for hover */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  
+  /* 🌟 ADD THIS LINE TO REMOVE THE UNDERLINE 🌟 */
+  text-decoration: none; 
+}
+
+/* Also add the hover effect for consistency (if you haven't already) */
+.secondaryCta:hover {
+  transform: scale(1.03);
+  box-shadow: 0 4px 10px rgba(138, 43, 226, 0.2); 
+}

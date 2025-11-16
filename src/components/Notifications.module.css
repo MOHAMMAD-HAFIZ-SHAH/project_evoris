@@ -1,0 +1,113 @@
+/* Main container */
+.container {
+    padding: 30px;
+    animation: fadeIn 0.25s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Page Heading */
+.heading {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #222;
+}
+
+/* Main card wrapper */
+.card {
+    background: white;
+    padding: 5px 0;
+    border-radius: 16px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+    border: 1px solid #f1f1f1;
+}
+
+/* Each notification row */
+.item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 20px;
+    text-decoration: none;
+    color: #333;
+    border-bottom: 1px solid #eee;
+    transition: 0.2s ease;
+}
+
+.item:last-child {
+    border-bottom: none;
+}
+
+.item:hover {
+    background: #fafafa;
+    transform: translateX(3px);
+}
+
+/* Left side (dot + title + time) */
+.left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* Icon dot */
+.dot {
+    font-size: 28px;
+    width: 35px;
+    text-align: center;
+}
+
+/* Title and time block */
+.info {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Notification title */
+.title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #222;
+    margin-bottom: 4px;
+}
+
+/* Time text */
+.time {
+    font-size: 13px;
+    color: #777;
+}
+
+/* Right side arrow */
+.arrow {
+    font-size: 22px;
+    color: #aaa;
+    transition: 0.2s;
+}
+
+.item:hover .arrow {
+    color: #444;
+    transform: translateX(2px);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .item {
+        padding: 15px 14px;
+    }
+
+    .dot {
+        font-size: 24px;
+    }
+
+    .title {
+        font-size: 15px;
+    }
+
+    .time {
+        font-size: 12px;
+    }
+}

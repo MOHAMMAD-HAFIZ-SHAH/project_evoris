@@ -1,0 +1,123 @@
+/* components/TestimonialCta.module.css */
+/* Testimonials */
+.testimonialsSection {
+    padding: 80px 50px;
+    background: linear-gradient(180deg, #f7f9fc, #ffffff); /* Continues the soft background */
+    text-align: center;
+}
+
+.testimonialHeading {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.testimonialSubheading {
+    color: #666;
+    margin-bottom: 40px;
+}
+
+.testimonialsGrid {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.testimonialCard {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    text-align: left;
+    flex: 1;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.stars {
+    color: #f6ad55; /* Gold/Orange for stars */
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+}
+
+.quote {
+    font-size: 1rem;
+    color: #333;
+    line-height: 1.6;
+    min-height: 100px; /* Ensure cards have similar height */
+}
+
+.authorContainer {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.initials {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    color: white;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+}
+
+.authorName {
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+.authorTitle {
+    color: #777;
+    font-size: 0.8rem;
+}
+
+/* Final CTA */
+.finalCtaContainer {
+    /* Bold purple/pink gradient background */
+    background: linear-gradient(90deg, #8a2be2, #c432a3); 
+    padding: 60px 50px;
+    text-align: center;
+    color: white;
+    border-radius: 10px;
+    max-width: 1000px;
+    margin: 50px auto;
+}
+
+.ctaHeading {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 10px;
+}
+
+.ctaText {
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+}
+
+
+.ctaButton {
+    padding: 15px 40px;
+    border: none;
+    border-radius: 30px;
+    color: #8a2be2; 
+    background-color: white;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    /* Ensure transition includes transform and shadow */
+    transition: transform 0.2s ease, box-shadow 0.2s ease; 
+    text-decoration: none; 
+}
+
+/* Hover State */
+.ctaButton:hover {
+    /* Make the button slightly bigger */
+    transform: scale(1.03); 
+    /* Add shadow for a lift effect */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); 
+}

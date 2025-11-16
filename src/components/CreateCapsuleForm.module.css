@@ -1,0 +1,221 @@
+/* --- LIGHT MODE VARIABLES (Hardcoded to remove dark mode dependency) --- */
+/* The following values replace the dark mode variables:
+    --bg-primary: #f8f9fa; (Very light gray/white)
+    --bg-secondary: #ffffff; (White)
+    --text-primary: #1f2937; (Dark text)
+    --text-secondary: #6b7280; (Gray text)
+    --card-bg: #ffffff; (White)
+    --border-color: #e5e7eb; (Light border)
+    --input-bg: #ffffff; (White input)
+    --active-color: #6366f1; (Indigo/Blue for active elements)
+    --button-gradient-start: #4f46e5; (Indigo start)
+    --button-gradient-end: #6366f1; (Indigo end)
+*/
+
+.capsuleFormContainer {
+    padding: 40px;
+    flex-grow: 1; 
+    /* Hardcoded light mode primary background */
+    background-color: #f8f9fa; 
+    transition: background-color 0.3s;
+}
+
+.capsuleCard {
+    /* Hardcoded white background for card */
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 20px;
+    /* Adjusted shadow for light mode visibility */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); 
+    max-width: 700px;
+    margin: 0 auto;
+    /* Hardcoded light border color */
+    border: 1px solid #e5e7eb;
+    transition: background 0.3s;
+}
+
+.heading {
+    font-size: 1.8rem;
+    font-weight: 700;
+    /* Hardcoded dark text color */
+    color: #1f2937;
+    margin-top: 0;
+    margin-bottom: 30px;
+}
+
+.label {
+    display: block;
+    font-size: 1rem;
+    font-weight: 600;
+    /* Hardcoded dark text color */
+    color: #1f2937;
+    margin-top: 20px;
+    margin-bottom: 8px;
+}
+
+.inputField {
+    width: 100%;
+    padding: 12px 15px;
+    /* Hardcoded light border and background */
+    border: 1px solid #e5e7eb;
+    background-color: #ffffff;
+    color: #1f2937; /* Dark text for light background */
+    border-radius: 8px;
+    box-sizing: border-box;
+    font-size: 1rem;
+    transition: border-color 0.3s, background-color 0.3s;
+}
+
+.inputField::placeholder {
+    color: #9ca3af; /* Muted placeholder text */
+    opacity: 1;
+}
+
+.textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+/* --- Content Type Buttons --- */
+.contentButtons {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.contentButton {
+    padding: 15px 20px;
+    /* Hardcoded light border/text color */
+    border: 2px solid #e5e7eb; 
+    background: #ffffff; /* Use white background */
+    color: #6b7280; /* Muted color */
+    font-weight: 600;
+    cursor: pointer;
+    flex: 1;
+    transition: all 0.2s;
+}
+
+/* Override button colors for categorization (KEEPING these for color coding) */
+.contentButton:nth-child(1) { color: #5cb85c; border-color: #5cb85c; } 
+.contentButton:nth-child(2) { color: #3498db; border-color: #3498db; }
+.contentButton:nth-child(3) { color: #e74c3c; border-color: #e74c3c; } 
+.contentButton:nth-child(4) { color: #f39c12; border-color: #f39c12; }
+
+.contentButton:hover {
+    opacity: 0.8;
+}
+
+.activeContent {
+    color: white !important;
+    /* Hardcoded active color (Indigo/Blue) */
+    background: #6366f1 !important; 
+    border-color: #6366f1 !important;
+    box-shadow: 0 4px 10px rgba(99, 102, 241, 0.3);
+}
+
+/* --- Date Input Styling --- */
+.dateInputContainer {
+    position: relative;
+}
+
+.dateInputContainer input {
+    padding-right: 40px; 
+}
+
+.calendarIcon {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    /* Hardcoded active color for icon */
+    color: #6366f1; 
+    pointer-events: none; 
+}
+
+/* --- Dynamic Content Upload/Input Section --- */
+.contentSection {
+    margin-top: 25px;
+    padding: 20px;
+    /* Hardcoded light border color */
+    border: 2px dashed #e5e7eb; 
+    border-radius: 8px;
+    background-color: #f8f9fa; /* Slightly different background for section */
+}
+
+.fileUploader {
+    display: flex;
+    flex-direction: column;
+}
+
+.fileInput {
+    /* Style the file input button to be readable in light mode */
+    padding: 10px 0;
+    color: #6b7280;
+    font-size: 0.9em;
+    border: none;
+    background: transparent;
+}
+
+.fileCount {
+    font-size: 0.8em;
+    color: #6b7280;
+    margin-top: 5px;
+}
+
+/* --- Error Text --- */
+.errorText {
+    color: #e74c3c; /* Red for errors */
+    background-color: #ffeeee; /* Very light red background for visibility */
+    border: 1px solid #e74c3c;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+
+/* --- Action Buttons --- */
+.actionButtons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    margin-top: 40px;
+}
+
+.saveButton {
+    padding: 12px 30px;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-weight: bold;
+    /* Hardcoded button gradient */
+    background: linear-gradient(90deg, #4f46e5, #6366f1);
+    cursor: pointer;
+    transition: opacity 0.2s, transform 0.2s;
+}
+
+.saveButton:hover {
+    opacity: 0.9;
+}
+
+.saveButton:disabled {
+    background: #ccc; /* Muted grey */
+    cursor: not-allowed;
+    opacity: 0.7;
+    color: #6b7280;
+}
+
+.cancelButton {
+    padding: 12px 30px;
+    /* Hardcoded border and background for cancellation */
+    border: 1px solid #e5e7eb;
+    background: #ffffff;
+    color: #1f2937;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.2s;
+}
+
+.cancelButton:hover {
+    background-color: #f1f1f1; /* Light gray hover */
+}

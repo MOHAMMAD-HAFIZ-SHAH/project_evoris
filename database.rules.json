@@ -1,0 +1,40 @@
+{
+  "rules": {
+    // Top-level default rule: Deny access to everything unless overridden below.
+    ".read": false,
+    ".write": false,
+
+    "users": {
+      // The $uid is a wildcard that captures the child key (which should be the user's ID)
+      "$uid": {
+        // A user can read their own data if they are authenticated AND
+        // the $uid (the path key) matches their authentication uid.
+        ".read": "auth != null && auth.uid == $uid",
+        
+        // A user can write/update their own data under the same conditions.
+        ".write": "auth != null && auth.uid == $uid",
+
+        // Optional: Data validation rules can go here. Example:
+        // "profile_pic": {
+        //   ".validate": "newData.isString()"
+        // }
+      }
+    },
+    
+    "public_posts": {
+      // Allow any authenticated user to read public posts
+      ".read": "auth != null",
+      
+      // Allow authenticated users to write a new post if the data is valid
+      // This rule requires the new item to have a 'userId' field matching the writer's uid.
+      "$postId": {
+        ".write": "auth != null && newData.child('userId').val() == auth.uid",
+        
+        // Prevent users from deleting or modifying a post they didn't create
+        // You would typically use a validation rule here to prevent modifying 
+        // the 'userId' after creation.
+        ".validate": "newData.child('userId').val() == auth.uid"
+      }
+    }
+  }
+}

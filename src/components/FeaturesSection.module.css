@@ -1,0 +1,101 @@
+/* components/FeaturesSection.module.css */
+.section {
+    padding: 80px 50px;
+    background-color: #f7f9fc; /* Slight off-white background for separation */
+    text-align: center;
+}
+
+/* Stats Row */
+.statsContainer {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    margin-bottom: 80px;
+}
+
+.statItem {
+    text-align: center;
+    padding: 10px;
+}
+
+.statIcon {
+    font-size: 2rem;
+    display: inline-block;
+    background-color: #f0f0ff; /* Pale background for the circle icons */
+    padding: 10px;
+    border-radius: 50%;
+}
+
+.statValue {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.statLabel {
+    color: #777;
+    font-size: 0.9rem;
+}
+
+/* Main Text */
+.heading {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.subheading {
+    max-width: 700px;
+    margin: 0 auto 50px auto;
+    color: #666;
+    font-size: 1.1rem;
+}
+
+/* Features Grid */
+.featuresGrid {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.featureCard {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    text-align: left;
+    flex: 1;
+    min-width: 250px;
+    max-width: 280px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    border: 1px solid #eee;
+    transition: transform 0.3s;
+}
+
+.featureIconWrapper {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.featureIcon {
+    font-size: 1.5rem;
+    line-height: 1;
+}
+
+.featureTitle {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.featureText {
+    color: #666;
+    font-size: 0.95rem;
+}

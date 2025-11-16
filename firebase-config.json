@@ -1,0 +1,14 @@
+{
+  "version": "2",
+  "projectNumber": "126374103666",
+  "projectId": "evoris-80629",
+  "appId": "1:126374103666:web:045233cd7cfe8814ba10eb",
+  "realtimeDatabaseInstanceUri": "https://evoris-80629-default-rtdb.firebaseio.com",
+  "realtimeDatabaseUrl": "",
+  "storageBucket": "evoris-80629.firebasestorage.app",
+  "locationId": "",
+  "apiKey": "AIzaSyBjUBdV-UDlWmmgci4zRLyUuOqp4jkUx4Q",
+  "authDomain": "evoris-80629.firebaseapp.com",
+  "messagingSenderId": "126374103666",
+  "measurementId": "G-FYT6SJP1K0"
+}

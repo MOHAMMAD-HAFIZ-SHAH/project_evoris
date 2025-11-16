@@ -1,0 +1,21 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // This rule allows read/create only if the user is authenticated 
+    // AND the document's userId matches the requesting user's UID.
+    match /capsules/{capsuleId} {
+      // 🌟 Ensures the READ operation works 🌟
+      allow read: if request.auth != null && resource.data.userId == request.auth.uid;
+      
+      allow create: if request.auth != null && request.resource.data.userId == request.auth.uid;
+
+      allow update, delete: if false; 
+    }
+    
+    // Ensures all other collections are safely locked down
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

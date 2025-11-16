@@ -1,0 +1,243 @@
+/* --- CSS Variable Definitions for DARK MODE ONLY --- */
+:global(html) {
+    /* Default variables for a fallback or light theme (not used here) */
+    --bg-primary: #f4f6f8;
+    --text-primary: #1f2937;
+    --card-bg: #ffffff;
+    --border-color: #e5e7eb;
+}
+
+/* 🌟 This block applies the dark theme colors 🌟 */
+:global(html[data-theme='dark']) {
+    --bg-primary: #111827; /* Dark background */
+    --bg-secondary: #1f2937; /* Even darker cards/elements */
+    --text-primary: #f9fafb; /* Light text */
+    --text-secondary: #9ca3af; /* Muted light text */
+    --card-bg: #1f2937; /* Card background */
+    --border-color: #374151; /* Darker borders */
+    --input-bg: #374151; /* Dark input background */
+    --active-color: #8b5cf6; /* Primary accent purple */
+    --button-gradient-start: #6d28d9; 
+    --button-gradient-end: #8b5cf6; 
+}
+
+/* --- Global Setup for Dark Theme --- */
+:global(body) {
+    /* Apply dark mode variables to the body */
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: Arial, sans-serif;
+    margin: 0;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* --- Layout and Structure --- */
+.settingsPage {
+    padding: 40px;
+}
+
+.settingsHeading {
+    margin-bottom: 30px;
+    color: var(--text-primary);
+}
+
+.settingsGrid {
+    display: grid;
+    /* Adjusted to match the three-column layout in the image */
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 30px;
+}
+
+/* --- Card Styling --- */
+.card {
+    background-color: var(--card-bg);
+    padding: 25px;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    /* Subtle dark mode shadow */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); 
+}
+
+.card h3 {
+    margin-top: 0;
+    font-size: 1.2em;
+    color: var(--text-primary);
+    margin-bottom: 20px;
+}
+
+/* --- Input Fields --- */
+label {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-size: 0.9em;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.inputField {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    background-color: var(--input-bg);
+    color: var(--text-primary);
+    box-sizing: border-box;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+/* Style for disabled inputs (like the Email field) */
+.inputField[disabled] {
+    opacity: 0.7;
+    cursor: not-allowed;
+    /* Use a slightly different background for disabled */
+    background-color: #374151; 
+}
+
+
+/* --- Update Button --- */
+.updateButton {
+    width: 100%;
+    padding: 12px;
+    margin-top: 25px;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(90deg, var(--button-gradient-start), var(--button-gradient-end));
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.updateButton:hover {
+    opacity: 0.9;
+}
+
+/* --- Security Item Layout --- */
+.securityItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    border-top: 1px solid var(--border-color);
+}
+
+.securityItem:first-of-type {
+    border-top: none;
+    padding-top: 0;
+}
+
+.securityItem h4 {
+    margin: 0;
+    font-size: 1em;
+    font-weight: 500;
+}
+
+.securityItem p {
+    margin: 4px 0 0 0;
+    font-size: 0.8em;
+    color: var(--text-secondary);
+}
+
+.securityButton {
+    background-color: transparent;
+    color: var(--active-color);
+    border: 1px solid var(--active-color);
+    padding: 8px 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.2s;
+}
+
+.securityButton:hover {
+    background-color: var(--active-color);
+    color: var(--text-primary);
+}
+
+/* --- Preference Item Layout --- */
+.preferenceItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    border-top: 1px solid var(--border-color);
+}
+
+.preferenceItem:first-of-type {
+    border-top: none;
+    padding-top: 0;
+}
+
+.preferenceText h4 {
+    margin: 0;
+    font-size: 1em;
+    font-weight: 500;
+}
+
+.preferenceText p {
+    margin: 4px 0 0 0;
+    font-size: 0.8em;
+    color: var(--text-secondary);
+}
+
+/* --- Custom Switch (Toggle) Styles --- */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 48px;
+    height: 24px;
+    margin-left: 10px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--border-color); /* Off state color */
+    transition: 0.4s;
+    border-radius: 24px; /* Round slider */
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 3px;
+    bottom: 3px;
+    background-color: #ffffff; /* Thumb color */
+    transition: 0.4s;
+    border-radius: 50%; /* Round thumb */
+}
+
+/* ON state: The Dark Mode is ON by default in the JS, so this is the default look */
+.switch input:checked + .slider {
+    background-color: var(--active-color); /* Purple for ON state */
+}
+
+.switch input:checked + .slider:before {
+    transform: translateX(24px);
+}
+
+/* Disabled State Styling */
+.switch input[disabled] + .slider {
+    opacity: 0.5; /* Fade out disabled switches */
+    cursor: not-allowed;
+    background-color: #555; /* Muted grey for disabled off-state */
+}
+
+.switch input[disabled]:checked + .slider {
+    /* Muted purple for disabled on-state */
+    background-color: var(--active-color); 
+    opacity: 0.5;
+}

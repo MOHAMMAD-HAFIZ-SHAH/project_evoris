@@ -1,0 +1,490 @@
+/* components/Dashboard.module.css */
+
+/* --- Layout --- */
+.dashboardContainer {
+    display: flex;
+    min-height: 100vh;
+    background-color: #f7f9fc; /* Very light background for the main area */
+}
+
+/* --- Sidebar (Fixed Width) --- */
+.sidebar {
+    width: 250px;
+    background-color: white;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
+    padding: 20px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Pushes user/sign-out to the bottom */
+}
+
+.logoContainer {
+    display: flex;
+    align-items: center;
+    padding: 0 20px 30px 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.logoIcon {
+    font-size: 1.5rem;
+    color: #8a2be2;
+    margin-right: 10px;
+}
+
+.logoText {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #333;
+}
+
+/* Navigation */
+.nav {
+    flex-grow: 1;
+    padding: 20px 0;
+}
+
+.navItem {
+    display: flex;
+    align-items: center;
+    padding: 12px 20px;
+    color: #555;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+    font-weight: 500;
+    text-decoration: none; /* Ensure Link components look clean */
+}
+
+.navIcon {
+    margin-right: 15px;
+    font-size: 1.2rem;
+}
+
+.navItem:hover {
+    color: #8a2be2;
+}
+
+.navItem.active {
+    background-color: #f0f4ff; /* Light background for active state */
+    color: #8a2be2;
+    border-right: 4px solid #8a2be2; /* Active indicator bar */
+    font-weight: 600;
+}
+
+/* User and Sign Out */
+.bottomSection {
+    padding: 20px;
+    border-top: 1px solid #eee;
+}
+
+.userSection {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.userAvatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #c432a3;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin-right: 10px;
+}
+
+.userName {
+    font-weight: 600;
+    margin: 0;
+    font-size: 0.95rem;
+}
+
+.viewProfile {
+    color: #8a2be2;
+    font-size: 0.8rem;
+    cursor: pointer;
+    margin: 0;
+}
+
+.signOutButton {
+    color: #c432a3;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.9rem;
+    padding: 8px 0;
+    transition: opacity 0.2s;
+}
+
+.signOutButton:hover {
+    opacity: 0.8;
+}
+
+/* --- Main Content --- */
+.mainContent {
+    flex-grow: 1;
+    padding: 40px;
+}
+
+.welcomeHeading {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.managementText {
+    color: #777;
+    font-size: 1rem;
+    margin-bottom: 30px;
+}
+
+/* Status Cards */
+.statusGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.statusCard {
+    background-color: white; /* Base white background */
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    position: relative;
+    overflow: hidden;
+    height: 120px;
+    border: 1px solid #eee;
+}
+
+.statusLabel {
+    font-size: 0.9rem;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+.statusValue {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #333;
+    margin: 0;
+}
+
+.statusIcon {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    font-size: 2.5rem;
+    /* 🌟 ADJUSTMENT: Opacity reduced for subtle background icon 🌟 */
+    opacity: 0.3; 
+    color: #8a2be2;
+}
+
+/* Action Cards (Create and View) */
+.actionGrid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr; /* Create Card is wider */
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.createCard {
+    background: linear-gradient(90deg, #8a2be2, #c432a3); /* Primary Gradient */
+    color: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 15px rgba(138, 43, 226, 0.3);
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.viewCard {
+    background-color: white;
+    border: 1px solid #8a2be2;
+    color: #333;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    cursor: pointer;
+    transition: transform 0.2s;
+    position: relative;
+    overflow: hidden;
+}
+
+.createCard:hover, .viewCard:hover {
+    transform: translateY(-5px);
+}
+
+.actionIcon {
+    font-size: 2.5rem;
+    font-weight: 300;
+    margin-bottom: 10px;
+}
+
+.createCard h3, .viewCard h3 {
+    font-size: 1.5rem;
+    margin: 0 0 5px 0;
+    font-weight: 700;
+}
+
+.createCard p {
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+.viewCard .actionIcon {
+    color: #8a2be2;
+}
+
+/* Recent Activity */
+.recentActivityHeading {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.activityList {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.activityItem {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    padding: 15px 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.03);
+    border: 1px solid #eee;
+}
+
+/* 🌟 ADJUSTMENT: Removing fixed color here. The JS component controls it via inline style for locked/unlocked state. */
+.activityIcon {
+    font-size: 1.5rem;
+    margin-right: 15px;
+}
+
+.activityText {
+    flex-grow: 1;
+    text-align: left;
+}
+
+.activityTitle {
+    font-weight: 600;
+    margin: 0;
+    color: #333;
+}
+
+.activityStatus {
+    font-size: 0.85rem;
+    color: #777;
+    margin: 0;
+}
+
+.activityButton {
+    background-color: #8a2be2;
+    color: white;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.activityButton:hover {
+    opacity: 0.9;
+}
+
+/* 🌟 NEW: Empty state for recent activity list 🌟 */
+.emptyActivity {
+    text-align: center;
+    padding: 30px;
+    background-color: #ffffff;
+    border: 1px dashed #ccc;
+    border-radius: 10px;
+    color: #777;
+    font-size: 1.1rem;
+    margin-top: 10px;
+}
+/* ==========================
+   PROFILE MODAL (VIEW PROFILE)
+   ========================== */
+
+.profileOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.35);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(4px);
+    z-index: 9999;
+}
+
+.profileCard {
+    width: 520px;
+    background: white;
+    border-radius: 22px;
+    padding: 40px 35px;
+    position: relative;
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.12);
+    animation: fadeIn 0.25s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.closeButton {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    background: #f2f2f2;
+    border: none;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    font-size: 16px;
+    color: #444;
+    transition: background 0.2s;
+}
+
+.closeButton:hover {
+    background: #e4e4e4;
+}
+
+.profileAvatar {
+    width: 95px;
+    height: 95px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #8a2be2, #c432a3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 36px;
+    font-weight: bold;
+    margin: 0 auto 15px auto;
+    box-shadow: 0 6px 18px rgba(138, 43, 226, 0.3);
+}
+
+.profileName {
+    text-align: center;
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 4px;
+    color: #333;
+}
+
+.profileTag {
+    text-align: center;
+    color: #888;
+    font-size: 0.95rem;
+    margin-bottom: 25px;
+}
+
+.profileStats {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.statBox {
+    width: 30%;
+    background: #f8f7ff;
+    padding: 18px 0;
+    border-radius: 14px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+}
+
+.statBox h3 {
+    margin: 0;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #333;
+}
+
+.statBox p {
+    margin: 3px 0 0 0;
+    font-size: 0.85rem;
+    color: #777;
+}
+
+.sectionTitle {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #333;
+    margin: 20px 0 12px 0;
+}
+
+.detailRow {
+    display: flex;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.detailIcon {
+    font-size: 1.3rem;
+}
+
+.detailLabel {
+    margin: 0;
+    color: #777;
+    font-size: 0.85rem;
+}
+
+.detailValue {
+    margin: 0;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #333;
+}
+
+.profileActions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 25px;
+}
+
+.settingsButton {
+    background: #f5f0ff;
+    color: #8a2be2;
+    padding: 12px 28px;
+    border-radius: 12px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+.settingsButton:hover {
+    background: #ebe3ff;
+}
+
+.logoutButton {
+    background: #fef2f3;
+    color: #e74c3c;
+    padding: 12px 28px;
+    border-radius: 12px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.logoutButton:hover {
+    background: #ffe4e6;
+}

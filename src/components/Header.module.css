@@ -1,0 +1,80 @@
+/* components/Header.module.css */
+.header {
+    margin-top: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 50px;
+  width: 100%;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #6a0dad; /* Purple for branding */
+  display: flex;
+  align-items: center;
+}
+
+.logoIcon {
+    font-size: 1.8rem;
+    margin-right: 5px;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+}
+
+.signInLink {
+  margin-right: 10px;
+  color: #444;
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+.getStartedButton {
+  padding: 10px 20px;
+  margin-right: 100px;
+  border: none;
+  border-radius: 20px;
+  color: white;
+  font-weight: bold;
+  /* Primary Button Gradient */
+  background: linear-gradient(90deg, #8a2be2, #c432a3);
+  cursor: pointer;
+  transition: opacity 0.3s;
+  
+  /* 🌟 ADD THIS LINE TO REMOVE THE UNDERLINE 🌟 */
+  text-decoration: none; 
+}
+
+.getStartedButton {
+  /* ... existing styles ... */
+  transition: transform 0.2s ease, filter 0.2s ease; /* Add transition for smoothness */
+  text-decoration: none; 
+}
+
+/* Hover State */
+.getStartedButton:hover {
+  /* Make it slightly bigger */
+  transform: scale(1.03); 
+  /* Make the color brighter */
+  filter: brightness(1.1);
+}
+/* In components/Header.module.css */
+
+.signInLink {
+  margin-right: 30px; 
+  color: #444; /* Default dark gray */
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.1s ease; /* Ensure transition is smooth */
+}
+
+/* Hover State */
+.signInLink:hover {
+  /* Bright purple on hover */
+  color: #6a0dad; 
+  transform: scale(1.5);
+}
