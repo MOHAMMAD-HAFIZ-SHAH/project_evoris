@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { db } from "../firebase";
 import { doc, getDoc } from "firebase/firestore";
-
 import styles from "./ViewCapsule.module.css";
 
 const ViewCapsule = () => {
@@ -45,7 +44,9 @@ const ViewCapsule = () => {
 
     return (
         <div className={styles.container}>
-            <Link to="/dashboard/my-capsules" className={styles.backBtn}>← Back</Link>
+            <Link to="/dashboard/my-capsules" className={styles.backBtn}>
+                ← Back
+            </Link>
 
             <h1 className={styles.title}>{capsule.title}</h1>
             <p className={styles.desc}>{capsule.description}</p>
@@ -60,8 +61,7 @@ const ViewCapsule = () => {
                 </p>
             ) : (
                 <div className={styles.contentBox}>
-
-                    {/* Text */}
+                    {/* TEXT */}
                     {capsule?.contentStorage?.text && (
                         <div className={styles.section}>
                             <h3>📄 Text</h3>
@@ -69,71 +69,73 @@ const ViewCapsule = () => {
                         </div>
                     )}
 
-                    {/* Photos */}
-                    {capsule?.contentStorage?.photos?.length > 0 && (
-                        <div className={styles.section}>
-                            <h3>🖼 Photos</h3>
-                            <div className={styles.mediaGrid}>
-                                {capsule.contentStorage.photos.map((url, index) => (
-                                    <div key={index} className={styles.mediaWrapper}>
-                                        <img
-                                            src={url}
-                                            alt=""
-                                            className={styles.mediaImage}
-                                            onClick={() => window.open(url, "_blank")}
-                                        />
-                                        <a href={url} download className={styles.downloadBtn}>
-                                            Download
-                                        </a>
-                                    </div>
-                                ))}
+                    {/* PHOTOS */}
+                    {Array.isArray(capsule?.contentStorage?.photos) &&
+                        capsule.contentStorage.photos.length > 0 && (
+                            <div className={styles.section}>
+                                <h3>🖼 Photos</h3>
+                                <div className={styles.mediaGrid}>
+                                    {capsule.contentStorage.photos.map((url, index) => (
+                                        <div key={index} className={styles.mediaWrapper}>
+                                            <img
+                                                src={url}
+                                                alt=""
+                                                className={styles.mediaImage}
+                                                onClick={() => window.open(url, "_blank")}
+                                            />
+                                            <a href={url} download className={styles.downloadBtn}>
+                                                Download
+                                            </a>
+                                        </div>
+                                    ))}
+                                </div>
                             </div>
-                        </div>
-                    )}
+                        )}
 
-                    {/* Videos */}
-                    {capsule?.contentStorage?.videos?.length > 0 && (
-                        <div className={styles.section}>
-                            <h3>🎥 Videos</h3>
-                            <div className={styles.mediaGrid}>
-                                {capsule.contentStorage.videos.map((url, index) => (
-                                    <div key={index} className={styles.mediaWrapper}>
-                                        <video
-                                            src={url}
-                                            controls
-                                            className={styles.mediaVideo}
-                                            onClick={() => window.open(url, "_blank")}
-                                        ></video>
-                                        <a href={url} download className={styles.downloadBtn}>
-                                            Download
-                                        </a>
-                                    </div>
-                                ))}
+                    {/* VIDEOS */}
+                    {Array.isArray(capsule?.contentStorage?.videos) &&
+                        capsule.contentStorage.videos.length > 0 && (
+                            <div className={styles.section}>
+                                <h3>🎥 Videos</h3>
+                                <div className={styles.mediaGrid}>
+                                    {capsule.contentStorage.videos.map((url, index) => (
+                                        <div key={index} className={styles.mediaWrapper}>
+                                            <video
+                                                src={url}
+                                                controls
+                                                className={styles.mediaVideo}
+                                                onClick={() => window.open(url, "_blank")}
+                                            ></video>
+                                            <a href={url} download className={styles.downloadBtn}>
+                                                Download
+                                            </a>
+                                        </div>
+                                    ))}
+                                </div>
                             </div>
-                        </div>
-                    )}
+                        )}
 
-                    {/* Audio */}
-                    {capsule?.contentStorage?.audio?.length > 0 && (
-                        <div className={styles.section}>
-                            <h3>🎵 Audio</h3>
-                            <div className={styles.mediaGrid}>
-                                {capsule.contentStorage.audio.map((url, index) => (
-                                    <div key={index} className={styles.mediaWrapper}>
-                                        <audio
-                                            src={url}
-                                            controls
-                                            className={styles.mediaAudio}
-                                        ></audio>
-                                        <a href={url} download className={styles.downloadBtn}>
-                                            Download
-                                        </a>
-                                    </div>
-                                ))}
+                    {/* AUDIO */}
+                    {Array.isArray(capsule?.contentStorage?.audio) &&
+                        capsule.contentStorage.audio.length > 0 && (
+                            <div className={styles.section}>
+                                <h3>🎵 Audio</h3>
+                                <div className={styles.mediaGrid}>
+                                    {capsule.contentStorage.audio.map((url, index) => (
+                                        <div key={index} className={styles.mediaWrapper}>
+                                            <audio
+                                                src={url}
+                                                controls
+                                                className={styles.mediaAudio}
+                                            ></audio>
+                                            <a href={url} download className={styles.downloadBtn}>
+                                                Download
+                                            </a>
+                                        </div>
+                                    ))}
+                                </div>
                             </div>
-                        </div>
-                    )}
-
+                        )}
                 </div>
             )}
         </div>

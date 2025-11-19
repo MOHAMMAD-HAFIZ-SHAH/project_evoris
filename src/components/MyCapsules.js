@@ -1,16 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-
 import { db, auth, onAuthStateChanged } from '../firebase';
-import { 
-    collection, query, where, getDocs, deleteDoc, doc 
-} from 'firebase/firestore';
-
+import { collection, query, where, getDocs, deleteDoc, doc } from 'firebase/firestore';
 import { ref, deleteObject, listAll } from "firebase/storage";
 import { storage } from "../firebase";
-
 import styles from './MyCapsules.module.css';
-
 
 // ----------------- CapsuleCard -----------------
 const CapsuleCard = ({ capsule, onDelete }) => {
@@ -50,15 +44,14 @@ const CapsuleCard = ({ capsule, onDelete }) => {
             <p className={styles.cardUnlockDate}>
                 {isLocked
                     ? `Unlocks on: ${formatDate(unlockDate)}`
-                    : `Unlocked on: ${formatDate(unlockDate)}`}
+                    : `Unlocked on: ${formatDate(unlockDate)}`
+                }
             </p>
 
             {isLocked ? (
-                <button className={styles.viewButton} disabled>
-                    Locked
-                </button>
+                <button className={styles.viewButton} disabled>Locked</button>
             ) : (
-                <Link 
+                <Link
                     to={`/dashboard/capsule/${capsule.id}`}
                     className={styles.viewButton}
                 >
@@ -76,8 +69,6 @@ const CapsuleCard = ({ capsule, onDelete }) => {
         </div>
     );
 };
-
-
 
 // ----------------- MyCapsules PAGE -----------------
 const MyCapsules = () => {
@@ -108,17 +99,16 @@ const MyCapsules = () => {
                 try {
                     const capsulesRef = collection(db, "capsules");
                     const q = query(capsulesRef, where("userId", "==", currentUser.uid));
-
                     const snapshot = await getDocs(q);
-                    const fetched = snapshot.docs.map(doc => ({
-                        id: doc.id,
-                        ...doc.data(),
+
+                    const fetched = snapshot.docs.map(d => ({
+                        id: d.id,
+                        ...d.data(),
                     }));
 
                     fetched.sort((a, b) => a.unlockDate.toDate() - b.unlockDate.toDate());
 
                     setCapsules(fetched);
-
                 } catch (err) {
                     console.error("Error fetching:", err);
                     setError("Failed to load your time capsules.");
@@ -131,42 +121,37 @@ const MyCapsules = () => {
         }
     }, [currentUser]);
 
-
-
     // ⭐ DELETE CAPSULE FUNCTION ⭐
     const handleDeleteCapsule = async (capsule) => {
         const confirmDelete = window.confirm(`Delete "${capsule.title}"? This cannot be undone.`);
         if (!confirmDelete) return;
 
         try {
-            // 1️⃣ SAFETY CHECK — If folderPath doesn't exist, stop
             if (!capsule.folderPath) {
                 alert("Cannot delete: missing storage folderPath.");
                 return;
             }
 
-            // 2️⃣ Delete all files in this folder
+            // Delete all files in the capsule folder
             const folderRef = ref(storage, capsule.folderPath);
+            const list = await listAll(folderRef);
 
-            const list = await listAll(folderRef); 
             for (const file of list.items) {
-                await deleteObject(file); 
+                await deleteObject(file);
             }
 
-            // 3️⃣ Delete Firestore document
+            // Delete Firestore doc
             await deleteDoc(doc(db, "capsules", capsule.id));
 
-            // 4️⃣ Remove from UI
+            // Remove from UI
             setCapsules(prev => prev.filter(c => c.id !== capsule.id));
 
             alert("Capsule deleted successfully!");
-
         } catch (err) {
             console.error("Delete failed:", err);
             alert("Failed to delete capsule. Check console.");
         }
     };
-
 
     if (loading) return <div className={styles.loading}>Loading your capsules...</div>;
     if (error) return <div className={styles.error}>Error: {error}</div>;
@@ -193,8 +178,8 @@ const MyCapsules = () => {
             ) : (
                 <div className={styles.capsulesGrid}>
                     {capsules.map(capsule => (
-                        <CapsuleCard 
-                            key={capsule.id} 
+                        <CapsuleCard
+                            key={capsule.id}
                             capsule={capsule}
                             onDelete={handleDeleteCapsule}
                         />

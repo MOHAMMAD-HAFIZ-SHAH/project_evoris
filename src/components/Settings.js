@@ -1,6 +1,6 @@
 // components/Settings.js (Corrected)
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useOutletContext } from 'react-router-dom';
 import styles from './Settings.module.css'; 
 

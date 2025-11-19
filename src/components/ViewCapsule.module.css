@@ -2,10 +2,11 @@
     max-width: 900px;
     margin: 40px auto;
     padding: 20px;
-    background: #ffffff;
+    background: #ffffff !important;
     border-radius: 16px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.08);
     animation: fadeIn 0.3s ease-in-out;
+    color: #000 !important;
 }
 
 @keyframes fadeIn {
@@ -17,27 +18,27 @@
     display: inline-block;
     margin-bottom: 10px;
     text-decoration: none;
-    color: #444;
+    color: #222 !important;
     font-size: 16px;
     transition: 0.2s ease;
 }
 
 .backBtn:hover {
-    color: #000;
+    color: #000 !important;
     transform: translateX(-3px);
 }
 
 .title {
     font-size: 28px;
     font-weight: 700;
-    color: #222;
+    color: #000 !important;
     margin-bottom: 8px;
     text-align: center;
 }
 
 .desc {
     font-size: 16px;
-    color: #555;
+    color: #000 !important;
     margin-bottom: 15px;
     text-align: center;
     line-height: 1.6;
@@ -45,7 +46,7 @@
 
 .unlockDate {
     font-size: 15px;
-    color: #666;
+    color: #000 !important;
     text-align: center;
     margin-bottom: 15px;
 }
@@ -54,6 +55,7 @@
     text-align: center;
     font-size: 20px;
     font-weight: 600;
+    color: #000 !important;
 }
 
 .lockText {
@@ -61,7 +63,7 @@
     padding: 25px;
     border-radius: 12px;
     background: #fff3cd;
-    color: #856404;
+    color: #856404 !important;
     font-size: 17px;
     margin-top: 20px;
     border-left: 5px solid #ffcc00;
@@ -70,7 +72,7 @@
 .error {
     padding: 30px;
     background: #ffe0e0;
-    color: #b30000;
+    color: #b30000 !important;
     text-align: center;
     border-radius: 12px;
     font-weight: 500;
@@ -80,14 +82,16 @@
     text-align: center;
     font-size: 18px;
     padding: 20px;
+    color: #000 !important;
 }
 
 .contentBox {
     margin-top: 25px;
     padding: 20px;
-    background: #fafafa;
+    background: #fafafa !important;
     border-radius: 14px;
     border: 1px solid #eee;
+    color: #000 !important;
 }
 
 .section {
@@ -96,21 +100,23 @@
 
 .section h3 {
     margin-bottom: 12px;
-    color: #333;
+    color: #000 !important;
     font-size: 20px;
     font-weight: 600;
 }
 
-.text {
-    font-size: 15px;
-    line-height: 1.6;
-    color: #444;
-    background: #ffffff;
+/* -------------------- TEXT BOX -------------------- */
+
+.textContent {
+    color: #000 !important;
+    font-size: 16px;
+    line-height: 1.7;
+    white-space: pre-wrap !important;
+    background: #fff !important;
     padding: 15px;
     border-radius: 12px;
-    border: 1px solid #eee;
+    border: 1px solid #ddd;
 }
-
 
 /* -------------------- MEDIA GRID -------------------- */
 
@@ -120,14 +126,13 @@
     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
 }
 
+/* Wrapper for each media item */
 
-/* Wrapper for media + download button */
 .mediaWrapper {
     display: flex;
     flex-direction: column;
     gap: 8px;
 }
-
 
 /* -------------------- PHOTOS -------------------- */
 
@@ -146,7 +151,6 @@
     box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
-
 /* -------------------- VIDEOS -------------------- */
 
 .mediaVideo {
@@ -157,13 +161,11 @@
     cursor: pointer;
 }
 
-
 /* -------------------- AUDIO -------------------- */
 
 .mediaAudio {
     width: 100%;
 }
-
 
 /* -------------------- DOWNLOAD BUTTON -------------------- */
 
@@ -183,8 +185,7 @@
     background: #1a5cd8;
 }
 
-
-/* -------------------- RESPONSIVE -------------------- */
+/* -------------------- MOBILE RESPONSIVE -------------------- */
 
 @media (max-width: 600px) {
     .container {
