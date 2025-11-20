@@ -8,45 +8,48 @@ const ViewCapsule = () => {
     const { id } = useParams();
     const [capsule, setCapsule] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [unlocked, setUnlocked] = useState(false);
 
     useEffect(() => {
-        const fetchCapsule = async () => {
+        const load = async () => {
             try {
-                const capsuleRef = doc(db, "capsules", id);
-                const snapshot = await getDoc(capsuleRef);
-
-                if (snapshot.exists()) {
-                    setCapsule(snapshot.data());
+                const ref = doc(db, "capsules", id);
+                const snap = await getDoc(ref);
+                if (snap.exists()) {
+                    setCapsule(snap.data());
                 }
-            } catch (err) {
-                console.error("Error loading capsule:", err);
             } finally {
                 setLoading(false);
             }
         };
-
-        fetchCapsule();
+        load();
     }, [id]);
 
     if (loading) return <div className={styles.loading}>Loading...</div>;
-
-    if (!capsule) {
+    if (!capsule)
         return (
             <div className={styles.error}>
-                Capsule not found.
-                <Link to="/dashboard/my-capsules">Go Back</Link>
+                Capsule not found. <Link to="/dashboard/my-capsules">Go Back</Link>
             </div>
         );
-    }
 
     const unlockDate = capsule.unlockDate.toDate();
-    const isLocked = unlockDate > new Date();
+    const isLockedByTime = unlockDate > new Date();
+
+    const handlePassword = () => {
+        const pass = prompt("Enter Title to unlock:");
+        if (pass && pass.trim() === capsule.title.trim()) {
+            setUnlocked(true);
+        } else {
+            alert("Incorrect password.");
+        }
+    };
+
+    const canView = !isLockedByTime || unlocked;
 
     return (
         <div className={styles.container}>
-            <Link to="/dashboard/my-capsules" className={styles.backBtn}>
-                ← Back
-            </Link>
+            <Link to="/dashboard/my-capsules" className={styles.backBtn}>← Back</Link>
 
             <h1 className={styles.title}>{capsule.title}</h1>
             <p className={styles.desc}>{capsule.description}</p>
@@ -55,87 +58,41 @@ const ViewCapsule = () => {
                 Unlock Date: {unlockDate.toLocaleString()}
             </p>
 
-            {isLocked ? (
-                <p className={styles.lockText}>
-                    🔒 This capsule is locked until the unlock date.
-                </p>
+            {!canView ? (
+                <>
+                    <p className={styles.lockText}>🔒 Capsule is locked</p>
+                    <button
+                        className={styles.viewButton}
+                        onClick={handlePassword}
+                        title="Password is the capsule title"
+                    >
+                        Open Capsule
+                    </button>
+                </>
             ) : (
                 <div className={styles.contentBox}>
-                    {/* TEXT */}
+
                     {capsule?.contentStorage?.text && (
                         <div className={styles.section}>
                             <h3>📄 Text</h3>
-                            <p>{capsule.contentStorage.text}</p>
+                            <p className={styles.textContent}>{capsule.contentStorage.text}</p>
                         </div>
                     )}
 
-                    {/* PHOTOS */}
-                    {Array.isArray(capsule?.contentStorage?.photos) &&
-                        capsule.contentStorage.photos.length > 0 && (
-                            <div className={styles.section}>
-                                <h3>🖼 Photos</h3>
-                                <div className={styles.mediaGrid}>
-                                    {capsule.contentStorage.photos.map((url, index) => (
-                                        <div key={index} className={styles.mediaWrapper}>
-                                            <img
-                                                src={url}
-                                                alt=""
-                                                className={styles.mediaImage}
-                                                onClick={() => window.open(url, "_blank")}
-                                            />
-                                            <a href={url} download className={styles.downloadBtn}>
-                                                Download
-                                            </a>
-                                        </div>
-                                    ))}
-                                </div>
+                    {capsule.contentStorage?.photos?.length > 0 && (
+                        <div className={styles.section}>
+                            <h3>🖼 Photos</h3>
+                            <div className={styles.mediaGrid}>
+                                {capsule.contentStorage.photos.map((url, idx) => (
+                                    <div key={idx} className={styles.mediaWrapper}>
+                                        <img src={url} alt={`${capsule.title || 'Capsule'} - ${idx + 1}`} className={styles.mediaImage} />
+                                        <a href={url} download className={styles.downloadBtn}>Download</a>
+                                    </div>
+                                ))}
                             </div>
-                        )}
+                        </div>
+                    )}
 
-                    {/* VIDEOS */}
-                    {Array.isArray(capsule?.contentStorage?.videos) &&
-                        capsule.contentStorage.videos.length > 0 && (
-                            <div className={styles.section}>
-                                <h3>🎥 Videos</h3>
-                                <div className={styles.mediaGrid}>
-                                    {capsule.contentStorage.videos.map((url, index) => (
-                                        <div key={index} className={styles.mediaWrapper}>
-                                            <video
-                                                src={url}
-                                                controls
-                                                className={styles.mediaVideo}
-                                                onClick={() => window.open(url, "_blank")}
-                                            ></video>
-                                            <a href={url} download className={styles.downloadBtn}>
-                                                Download
-                                            </a>
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-                        )}
-
-                    {/* AUDIO */}
-                    {Array.isArray(capsule?.contentStorage?.audio) &&
-                        capsule.contentStorage.audio.length > 0 && (
-                            <div className={styles.section}>
-                                <h3>🎵 Audio</h3>
-                                <div className={styles.mediaGrid}>
-                                    {capsule.contentStorage.audio.map((url, index) => (
-                                        <div key={index} className={styles.mediaWrapper}>
-                                            <audio
-                                                src={url}
-                                                controls
-                                                className={styles.mediaAudio}
-                                            ></audio>
-                                            <a href={url} download className={styles.downloadBtn}>
-                                                Download
-                                            </a>
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-                        )}
                 </div>
             )}
         </div>
